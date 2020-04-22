@@ -1374,7 +1374,7 @@ tasks:
         tool: bsondump
     - func: "run qa-tests"
       vars:
-        resmoke_suite: "core${resmoke_use_tls}"
+        resmoke_suite: "core${resmoke_use_ssl}"
         excludes: "requires_unstable,${excludes}"
 
 - name: qa-tests-4.2
@@ -1832,7 +1832,6 @@ buildvariants:
     build_tags: "ssl sasl gssapi"
     smoke_use_ssl: --use-ssl
     resmoke_use_ssl: _ssl
-    resmoke_use_tls: _tls
     USE_SSL: "true"
   tasks: *macos_tasks
 
@@ -1854,7 +1853,6 @@ buildvariants:
     build_tags: "ssl sasl gssapi"
     smoke_use_ssl: --use-ssl
     resmoke_use_ssl: _ssl
-    resmoke_use_tls: _tls
     edition: enterprise
     run_kinit: true
     resmoke_args: --jobs $(grep -c ^processor /proc/cpuinfo)
@@ -1936,8 +1934,8 @@ buildvariants:
     mongo_os: "ubuntu1604"
     mongo_edition: "enterprise"
     build_tags: "ssl tls sasl gssapi"
-    smoke_use_tls: --use-tls
-    resmoke_use_tls: _tls
+    smoke_use_ssl: --use-ssl
+    resmoke_use_ssl: _ssl
     edition: enterprise
     run_kinit: true
     resmoke_args: --jobs $(grep -c ^processor /proc/cpuinfo)
@@ -1975,7 +1973,6 @@ buildvariants:
     smoke_use_ssl: --use-ssl
     resmoke_args: --jobs $(grep -c ^processor /proc/cpuinfo)
     resmoke_use_ssl: _ssl
-    resmoke_use_tls: _tls
     excludes: requires_large_ram,requires_mongo_24
     edition: enterprise
     extension: .exe
@@ -2004,7 +2001,6 @@ buildvariants:
     mongo_arch: "arm64"
     build_tags: "ssl"
     resmoke_use_ssl: _ssl
-    resmoke_use_tls: _tls
     excludes: requires_mmap_available,requires_large_ram,requires_mongo_24,requires_mongo_26,requires_mongo_30
     resmoke_args: -j 2
     edition: ssl
@@ -2027,11 +2023,11 @@ buildvariants:
     mongo_edition: "targeted"
     mongo_arch: "aarch64"
     build_tags: "ssl"
-    resmoke_use_tls: _tls
+    resmoke_use_ssl: _ssl
     excludes: requires_mmap_available,requires_large_ram,requires_mongo_24,requires_mongo_26,requires_mongo_30
     resmoke_args: -j 2
     edition: ssl
-    USE_TLS: "true"
+    USE_SSL: "true"
   tasks: *ubuntu1804_arm64_tasks
 
 #######################################
@@ -2052,7 +2048,6 @@ buildvariants:
     mongo_arch: "ppc64le"
     build_tags: 'ssl sasl gssapi'
     resmoke_use_ssl: _ssl
-    resmoke_use_tls: _tls
     resmoke_args: -j 4
     excludes: requires_mmap_available,requires_large_ram,requires_mongo_24,requires_mongo_26,requires_mongo_30
     edition: enterprise
@@ -2105,7 +2100,6 @@ buildvariants:
     mongo_arch: "s390x"
     build_tags: "sasl gssapi ssl"
     resmoke_use_ssl: _ssl
-    resmoke_use_tls: _tls
     excludes: requires_mmap_available,requires_mongo_24,requires_mongo_26,requires_mongo_30
     resmoke_args: -j 2
     edition: enterprise
