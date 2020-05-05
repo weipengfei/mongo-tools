@@ -1080,6 +1080,7 @@ tasks:
     - func: "run tool integration tests"
       vars:
         INT_TEST: "true"
+        USE_SSL: "true"
 
 - name: integration-4.0
   commands:
@@ -1092,7 +1093,8 @@ tasks:
     - func: "wait for mongod to be ready"
     - func: "run tool integration tests"
       vars:
-          INT_TEST: "true" 
+          INT_TEST: "true"
+          USE_SSL: "true"
 
 - name: integration-4.0-auth
   commands:
@@ -1118,6 +1120,7 @@ tasks:
       vars:
           INT_TEST: "true"
           AUTH_TEST: "true"
+          USE_SSL: "true"
 
 - name: integration-4.0-cluster
   commands:
@@ -1132,6 +1135,7 @@ tasks:
     - func: "run tool integration tests"
       vars:
         INT_TEST: "true"
+        USE_SSL: "true"
 
 - name: integration-4.2
   commands:
@@ -1145,6 +1149,7 @@ tasks:
     - func: "run tool integration tests"
       vars:
         INT_TEST: "true"
+        USE_SSL: "true"
 
 - name: integration-4.2-auth
   commands:
@@ -1170,6 +1175,7 @@ tasks:
       vars:
         INT_TEST: "true"
         AUTH_TEST: "true"
+        USE_SSL: "true"
 
 - name: integration-4.4
   commands:
@@ -1858,8 +1864,6 @@ buildvariants:
     edition: enterprise
     run_kinit: true
     resmoke_args: --jobs $(grep -c ^processor /proc/cpuinfo)
-    USE_SSL: "true"
-    USE_TLS: "true"
   tasks: *rhel_x86_64_tasks
 
 - name: rhel70
@@ -1944,8 +1948,6 @@ buildvariants:
     edition: enterprise
     run_kinit: true
     resmoke_args: --jobs $(grep -c ^processor /proc/cpuinfo)
-    USE_SSL: "true"
-    USE_TLS: "true"
   tasks: *ubuntu_x86_64_tasks
 
 - name: ubuntu1804
